@@ -44,8 +44,10 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode',
               'sphinx.ext.doctest', 'sphinx.ext.intersphinx',
               'sphinx.ext.todo']
 
-# Use the python documentation website by default
-py_intersphinx = 'https://docs.python.org/{}.{}'.format(
+# Do not use the python documentation website by default
+# See bugs.debian.org bug 830603:
+#   python-guacamole: accesses the internet during build
+py_intersphinx = '/usr/share/doc/python{}.{}/html/'.format(
     *sys.version_info[0:2])
 if sys.platform.startswith('linux'):
     # On Linux, a pre-installed documentation will be used, if available
